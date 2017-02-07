@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="Resource/CSS/Common/style.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="../../external/jquery/jquery.js"></script>
+    <title>Calculator</title>
+    <script data-require="angular.js@1.4.0-beta.6" data-semver="1.4.0-beta.6" src="https://code.angularjs.org/1.4.0-beta.6/angular.js"></script>
+
+    <link data-require="bootstrap-css@3.0.3" data-semver="3.0.3" rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" />
+    <script src="calculator.js"></script>
+    <style>
+    .style {
+   margin: 40px;
+   padding: 20px;
+   max-width: 400px;
+   height: 350px;
+   border: 1px solid black;
+}   
+    </style></head>
+<body>
+    <center>
+        <h1>Calculator</h1>
+        <div class="style">
+
+            <div ng-app="myApp">
+                <div ng-controller="calculatorCtrl" ng-init='intiate'>
+
+                    <div>
+                        <label>Enter a value :</label>
+                        <input ng-model="model1" type="text" ng-focus='intiate="model1"'>{{(intiate==="model1")?'!':''}}
+                        <br />
+                        <br>
+
+
+                        <label>Another Value:</label>
+                        <input ng-model="model2" type="text" ng-focus='intiate="model2"'>{{(intiate==="model2")?'!':''}}
+                        <br />
+                        <br>
+
+                        <label>Operator:</label>{{ op }}
+
+                        <br>
+                        <br>
+                        <button ng-repeat="n in [1,2,3,4,5,6,7,8,9,0]" ng-click='$parent[intiate]=$parent[intiate]+""+n' ng-disabled='intiate===true'>{{n}}</button>
+                        <br>
+                        <button ng-repeat="(key,val) in operators" ng-click="$parent.op=key" ng-disabled='intiate===true'>{{key}}</button>
+
+                        <button ng-click="result=calc(op,model1,model2)">=</button>
+                        <br>
+                   
+
+                        <br><label>Result:</label> {{result}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </center>
+
+</body>
+</html>
